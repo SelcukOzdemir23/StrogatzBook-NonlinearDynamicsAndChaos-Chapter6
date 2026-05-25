@@ -1,0 +1,229 @@
+\ProvidesPackage{reftr}
+
+% by sinan
+
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{xstring}
+\RequirePackage{refcount}
+
+% reftr package replaces \ref command by default. 
+% If you don't want this behaviour simply comment the last line of the package.
+% Then you will have to use \reftr command for suffixed cross references.
+% This package should also work with composite numbers (such as "2.12").
+% 
+% reftr package also defines \trnumdecorator macro for suffixing numbers.
+% 
+% Usage of \ref (or \reftr if not replaced):
+% 
+% To produce only the label number (original \ref behavior):
+% \ref{(label name)} 
+% 
+% To produce label number with a suffix:
+% \ref{label name}{suffix}
+% 
+% suffix should be defined as if it was for number "1". Allowed suffixes are:
+%  - de
+%  - den
+%  - e
+%  - i
+%  - in
+% 
+% Examples (assuming the figure with label "fig:figure3" is the third figure):
+% 
+% \reftr{fig:figure3}       %This will output "3"
+% \reftr{fig:figure3}{de}   %This will output "3'te"
+% \reftr{fig:figure3}{den}  %This will output "3'ten"
+% \reftr{fig:figure3}{e}    %This will output "3'e"
+% \reftr{fig:figure3}{i}    %This will output "3'ü"
+% \reftr{fig:figure3}{in}   %This will output "3'ün"
+% 
+% Errors:
+% 
+% If \ref{}{} comes accross a number that it can't handle it will produce "3'??"
+% If a wrong suffix is input it will produce "'?unknwnSfx"
+% 
+% \ref{fig:figure3}{ün} %This will output "3'?unknwnSfx"
+% 
+% Usage of \trnumdecorator:
+% 
+% \trnumdecorator{argument-that-ends-with-number}{suffix}
+% 
+% suffix should be defined as if it was for number "1". Allowed suffixes are:
+%  - de
+%  - den
+%  - e
+%  - i
+%  - in
+% 
+% The stared version \trnumdecorator* will only produce the suffix
+% 
+% Example:
+% 
+% \trnumdecorator{blabla20}{in}   %This will output "blabla20'nin"
+% \trnumdecorator*{blabla20}{in}  %This will output "'nin"
+% 
+% Note: \trnumdecorator* is what \ref uses for suffixing numbers
+
+\csdef{trsuf1de}{de}
+\csdef{trsuf2de}{de}
+\csdef{trsuf3de}{te}
+\csdef{trsuf4de}{te}
+\csdef{trsuf5de}{te}
+\csdef{trsuf6de}{da}
+\csdef{trsuf7de}{de}
+\csdef{trsuf8de}{de}
+\csdef{trsuf9de}{da}
+\csdef{trsuf10de}{da}
+\csdef{trsuf20de}{de}
+\csdef{trsuf30de}{da}
+\csdef{trsuf40de}{ta}
+\csdef{trsuf50de}{de}
+\csdef{trsuf60de}{ta}
+\csdef{trsuf70de}{te}
+\csdef{trsuf80de}{de}
+\csdef{trsuf90de}{da}
+\csdef{trsuf100de}{de}
+\csdef{trsuf1000de}{de}
+
+\csdef{trsuf1den}{den}
+\csdef{trsuf2den}{den}
+\csdef{trsuf3den}{ten}
+\csdef{trsuf4den}{ten}
+\csdef{trsuf5den}{ten}
+\csdef{trsuf6den}{dan}
+\csdef{trsuf7den}{den}
+\csdef{trsuf8den}{den}
+\csdef{trsuf9den}{dan}
+\csdef{trsuf10den}{dan}
+\csdef{trsuf20den}{den}
+\csdef{trsuf30den}{dan}
+\csdef{trsuf40den}{tan}
+\csdef{trsuf50den}{den}
+\csdef{trsuf60den}{tan}
+\csdef{trsuf70den}{ten}
+\csdef{trsuf80den}{den}
+\csdef{trsuf90den}{dan}
+\csdef{trsuf100den}{den}
+\csdef{trsuf1000den}{den}
+
+\csdef{trsuf1e}{e}
+\csdef{trsuf2e}{ye}
+\csdef{trsuf3e}{e}
+\csdef{trsuf4e}{e}
+\csdef{trsuf5e}{e}
+\csdef{trsuf6e}{ya}
+\csdef{trsuf7e}{ye}
+\csdef{trsuf8e}{e}
+\csdef{trsuf9e}{a}
+\csdef{trsuf10e}{a}
+\csdef{trsuf20e}{ye}
+\csdef{trsuf30e}{a}
+\csdef{trsuf40e}{a}
+\csdef{trsuf50e}{ye}
+\csdef{trsuf60e}{a}
+\csdef{trsuf70e}{e}
+\csdef{trsuf80e}{e}
+\csdef{trsuf90e}{a}
+\csdef{trsuf100e}{e}
+\csdef{trsuf1000e}{e}
+
+\csdef{trsuf1i}{i}
+\csdef{trsuf2i}{yi}
+\csdef{trsuf3i}{ü}
+\csdef{trsuf4i}{ü}
+\csdef{trsuf5i}{i}
+\csdef{trsuf6i}{yı}
+\csdef{trsuf7i}{yi}
+\csdef{trsuf8i}{i}
+\csdef{trsuf9i}{u}
+\csdef{trsuf10i}{u}
+\csdef{trsuf20i}{yi}
+\csdef{trsuf30i}{u}
+\csdef{trsuf40i}{ı}
+\csdef{trsuf50i}{yi}
+\csdef{trsuf60i}{ı}
+\csdef{trsuf70i}{i}
+\csdef{trsuf80i}{i}
+\csdef{trsuf90i}{ı}
+\csdef{trsuf100i}{ü}
+\csdef{trsuf1000i}{i}
+
+\csdef{trsuf1in}{in}
+\csdef{trsuf2in}{nin}
+\csdef{trsuf3in}{ün}
+\csdef{trsuf4in}{ün}
+\csdef{trsuf5in}{in}
+\csdef{trsuf6in}{nın}
+\csdef{trsuf7in}{nin}
+\csdef{trsuf8in}{in}
+\csdef{trsuf9in}{un}
+\csdef{trsuf10in}{un}
+\csdef{trsuf20in}{nin}
+\csdef{trsuf30in}{un}
+\csdef{trsuf40in}{ın}
+\csdef{trsuf50in}{nin}
+\csdef{trsuf60in}{ın}
+\csdef{trsuf70in}{in}
+\csdef{trsuf80in}{in}
+\csdef{trsuf90in}{ın}
+\csdef{trsuf100in}{ün}
+\csdef{trsuf1000in}{in}
+
+\NewDocumentCommand \trnumdecorator {s m m}{%
+    \IfBooleanTF {#1}{}{#2}%
+    \csdef{rtLstDgt}{?}%    
+    \IfEndWith{#2}{1}{\csdef{rtLstDgt}{1}}{}%
+    \IfEndWith{#2}{2}{\csdef{rtLstDgt}{2}}{}%
+    \IfEndWith{#2}{3}{\csdef{rtLstDgt}{3}}{}%
+    \IfEndWith{#2}{4}{\csdef{rtLstDgt}{4}}{}%
+    \IfEndWith{#2}{5}{\csdef{rtLstDgt}{5}}{}%
+    \IfEndWith{#2}{6}{\csdef{rtLstDgt}{6}}{}%
+    \IfEndWith{#2}{7}{\csdef{rtLstDgt}{7}}{}%
+    \IfEndWith{#2}{8}{\csdef{rtLstDgt}{8}}{}%
+    \IfEndWith{#2}{9}{\csdef{rtLstDgt}{9}}{}%
+    \IfEndWith{#2}{10}{\csdef{rtLstDgt}{10}}{}%
+    \IfEndWith{#2}{20}{\csdef{rtLstDgt}{20}}{}%
+    \IfEndWith{#2}{30}{\csdef{rtLstDgt}{30}}{}%
+    \IfEndWith{#2}{40}{\csdef{rtLstDgt}{40}}{}%
+    \IfEndWith{#2}{50}{\csdef{rtLstDgt}{50}}{}%
+    \IfEndWith{#2}{60}{\csdef{rtLstDgt}{60}}{}%
+    \IfEndWith{#2}{70}{\csdef{rtLstDgt}{70}}{}%
+    \IfEndWith{#2}{80}{\csdef{rtLstDgt}{80}}{}%
+    \IfEndWith{#2}{90}{\csdef{rtLstDgt}{90}}{}%
+    \IfEndWith{#2}{00}{\csdef{rtLstDgt}{100}}{}%
+    \IfEndWith{#2}{000}{\csdef{rtLstDgt}{1000}}{}%    
+    \IfEndWith{#2}{1.}{\csdef{rtLstDgt}{1}}{}%
+    \IfEndWith{#2}{2.}{\csdef{rtLstDgt}{2}}{}%
+    \IfEndWith{#2}{3.}{\csdef{rtLstDgt}{3}}{}%
+    \IfEndWith{#2}{4.}{\csdef{rtLstDgt}{4}}{}%
+    \IfEndWith{#2}{5.}{\csdef{rtLstDgt}{5}}{}%
+    \IfEndWith{#2}{6.}{\csdef{rtLstDgt}{6}}{}%
+    \IfEndWith{#2}{7.}{\csdef{rtLstDgt}{7}}{}%
+    \IfEndWith{#2}{8.}{\csdef{rtLstDgt}{8}}{}%
+    \IfEndWith{#2}{9.}{\csdef{rtLstDgt}{9}}{}%
+    \IfEndWith{#2}{10.}{\csdef{rtLstDgt}{10}}{}%
+    \IfEndWith{#2}{20.}{\csdef{rtLstDgt}{20}}{}%
+    \IfEndWith{#2}{30.}{\csdef{rtLstDgt}{30}}{}%
+    \IfEndWith{#2}{40.}{\csdef{rtLstDgt}{40}}{}%
+    \IfEndWith{#2}{50.}{\csdef{rtLstDgt}{50}}{}%
+    \IfEndWith{#2}{60.}{\csdef{rtLstDgt}{60}}{}%
+    \IfEndWith{#2}{70.}{\csdef{rtLstDgt}{70}}{}%
+    \IfEndWith{#2}{80.}{\csdef{rtLstDgt}{80}}{}%
+    \IfEndWith{#2}{90.}{\csdef{rtLstDgt}{90}}{}%
+    \IfEndWith{#2}{00.}{\csdef{rtLstDgt}{100}}{}%
+    \IfEndWith{#2}{000.}{\csdef{rtLstDgt}{1000}}{}%
+    %\IfEq{\csuse{rtLstDgt}}{?}{'??}{'\csuse{trsuf\csuse{rtLstDgt}#3}}%Comment the line below and uncomment this one if you don't want ?unknwnSfx to be produced
+    \IfEq{\csuse{rtLstDgt}}{?}{'??}{'\ifcsdef{trsuf\csuse{rtLstDgt}#3}    {\csuse{trsuf\csuse{rtLstDgt}#3}}{?unknwnSfx}}%       
+}%
+
+\let\oldref=\ref %this is added to allow converting \ref into \reftr
+
+\NewDocumentCommand \reftr {m g}{%
+    \oldref{#1}%
+    \IfNoValueTF{#2}{}{%
+        \trnumdecorator*{\getrefnumber{#1}}{#2}%        
+    }%
+}%
+
+% \let\ref=\reftr %this line makes \ref work as \reftr

@@ -1,0 +1,328 @@
+\chapter*{Alıştırmalar ve Çözümleri}
+\phantomsection
+\addcontentsline{toc}{chapter}{Alıştırmalar ve Çözümleri}
+
+\begin{justify}
+Bu bölümde, Faz Düzlemi bölümünün ana başlıklarına göre düzenlenmiş alıştırmalar ve kısa çözümleri verilmiştir. Sorular, ilgili alt bölümdeki temel kavramları pekiştirmek amacıyla hazırlanmıştır.
+\end{justify}
+
+\phantomsection
+\section*{6.1 Faz Portreleri}
+\addcontentsline{toc}{section}{6.1 Faz Portreleri}
+
+\phantomsection
+\subsection*{Alıştırma 6.1.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.1.1}
+
+\begin{justify}
+Aşağıdaki sistemin sabit noktalarını bulun:
+\begin{align}
+\dot{x} &= y,\\
+\dot{y} &= x-x^3.
+\end{align}
+
+\textbf{Çözüm.} Sabit noktalarda $\dot{x}=0$ ve $\dot{y}=0$ olmalıdır. İlk denklemden $y=0$ bulunur. İkinci denklemden
+\begin{equation}
+x-x^3=x(1-x^2)=0
+\end{equation}
+olur. Dolayısıyla $x=0$, $x=1$ veya $x=-1$ bulunur. Sabit noktalar
+\begin{equation}
+(-1,0),\quad (0,0),\quad (1,0)
+\end{equation}
+şeklindedir.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.1.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.1.2}
+
+\begin{justify}
+Aşağıdaki sistem için $x$-nullcline ve $y$-nullcline eğrilerini bulun:
+\begin{align}
+\dot{x} &= x(1-y),\\
+\dot{y} &= y(x-2).
+\end{align}
+
+\textbf{Çözüm.} $x$-nullcline, $\dot{x}=0$ koşulunu sağlayan noktalar kümesidir. Buradan
+\begin{equation}
+x(1-y)=0
+\end{equation}
+olduğundan $x=0$ veya $y=1$ elde edilir. $y$-nullcline için $\dot{y}=0$ yazılır:
+\begin{equation}
+y(x-2)=0.
+\end{equation}
+Dolayısıyla $y=0$ veya $x=2$ bulunur. Nullcline kesişimleri sabit noktaları verir: $(0,0)$ ve $(2,1)$.
+\end{justify}
+
+\phantomsection
+\section*{6.2 Doğrusal Sistemler ve Lineerleştirme}
+\addcontentsline{toc}{section}{6.2 Doğrusal Sistemler ve Lineerleştirme}
+
+\phantomsection
+\subsection*{Alıştırma 6.2.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.2.1}
+
+\begin{justify}
+Aşağıdaki sistemin orijindeki sabit noktasını sınıflandırın:
+\begin{align}
+\dot{x} &= 2x+y,\\
+\dot{y} &= x+2y.
+\end{align}
+
+\textbf{Çözüm.} Matris
+\begin{equation}
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix}
+\end{equation}
+şeklindedir. Karakteristik denklem
+\begin{equation}
+\det(A-\lambda I)=(2-\lambda)^2-1=0
+\end{equation}
+olur. Buradan $\lambda_1=3$ ve $\lambda_2=1$ bulunur. Her iki özdeğer de pozitif ve gerçektir. Bu nedenle orijin kararsız düğümdür.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.2.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.2.2}
+
+\begin{justify}
+Aşağıdaki doğrusal olmayan sistemin orijin yakınındaki davranışını lineerleştirme ile belirleyin:
+\begin{align}
+\dot{x} &= -x-y+x^2,\\
+\dot{y} &= x-y+y^3.
+\end{align}
+
+\textbf{Çözüm.} Jacobian matrisi
+\begin{equation}
+J(x,y)=\begin{pmatrix}-1+2x&-1\\1&-1+3y^2\end{pmatrix}
+\end{equation}
+olur. Orijinde
+\begin{equation}
+A=J(0,0)=\begin{pmatrix}-1&-1\\1&-1\end{pmatrix}
+\end{equation}
+bulunur. İz $\tau=-2$, determinant $\Delta=2$ ve diskriminant $\tau^2-4\Delta=-4<0$'dır. Özdeğerlerin reel kısmı negatiftir. Bu nedenle orijin kararlı spiraldir.
+\end{justify}
+
+\phantomsection
+\section*{6.3 Varoluş, Teklik ve Topolojik Sonuçlar}
+\addcontentsline{toc}{section}{6.3 Varoluş, Teklik ve Topolojik Sonuçlar}
+
+\phantomsection
+\subsection*{Alıştırma 6.3.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.3.1}
+
+\begin{justify}
+Düzgün bir vektör alanında iki farklı yörüngenin aynı noktadan geçemeyeceğini açıklayın.
+
+\textbf{Çözüm.} Düzgün bir vektör alanında başlangıç değer problemi yerel olarak tek çözüme sahiptir. Eğer iki farklı yörünge aynı $\mathbf{x}_0$ noktasından geçseydi, bu noktayı başlangıç koşulu alan iki farklı çözüm elde edilmiş olurdu. Bu durum teklik teoremiyle çelişir. Dolayısıyla faz düzleminde yörüngeler birbirini kesemez; yalnızca aynı yörüngenin farklı zamanlardaki gösterimleri çakışabilir.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.3.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.3.2}
+
+\begin{justify}
+Bir yörüngenin kapalı bir eğri oluşturduğunu varsayalım. Bu yörünge üzerinde sabit nokta bulunabilir mi?
+
+\textbf{Çözüm.} Hayır. Kapalı yörünge üzerinde hareket eden faz noktası için vektör alanı sıfırdan farklı olmalıdır; aksi hâlde faz noktası sabit noktada durur ve yörünge ilerleyemez. Sabit noktada $\dot{x}=\dot{y}=0$ olduğundan çözüm zamana göre sabittir. Teklik nedeniyle aynı başlangıç noktasından hem sabit çözüm hem de kapalı yörünge çözümü çıkamaz.
+\end{justify}
+
+\phantomsection
+\section*{6.4 Limit Çevrimler}
+\addcontentsline{toc}{section}{6.4 Limit Çevrimler}
+
+\phantomsection
+\subsection*{Alıştırma 6.4.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.4.1}
+
+\begin{justify}
+Kutupsal koordinatlarda verilen
+\begin{align}
+\dot{r} &= r(1-r),\\
+\dot{\theta} &= 1
+\end{align}
+sisteminin limit çevrimini bulun ve kararlılığını belirleyin.
+
+\textbf{Çözüm.} Radyal denklem $\dot{r}=r(1-r)$ şeklindedir. Sabit yarıçaplar $r=0$ ve $r=1$'dir. $0<r<1$ için $\dot{r}>0$, $r>1$ için $\dot{r}<0$ olur. Bu nedenle yörüngeler $r=1$ çemberine yaklaşır. $r=1$ kararlı limit çevrimdir. $\dot{\theta}=1$ olduğundan hareket saat yönünün tersinedir.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.4.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.4.2}
+
+\begin{justify}
+Kutupsal koordinatlarda
+\begin{align}
+\dot{r} &= r(r-1),\\
+\dot{\theta} &= 1
+\end{align}
+sistemi için $r=1$ çevriminin kararlılığını inceleyin.
+
+\textbf{Çözüm.} $0<r<1$ için $r-1<0$ olduğundan $\dot{r}<0$ ve yörüngeler orijine doğru gider. $r>1$ için $\dot{r}>0$ olduğundan yörüngeler dışarı doğru uzaklaşır. Dolayısıyla $r=1$ çevrimi kararsız limit çevrimdir. Çevrimin biraz içindeki ve biraz dışındaki yörüngeler çevrimden uzaklaşır.
+\end{justify}
+
+\phantomsection
+\section*{6.5 Korunumlu Sistemler}
+\addcontentsline{toc}{section}{6.5 Korunumlu Sistemler}
+
+\phantomsection
+\subsection*{Alıştırma 6.5.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.5.1}
+
+\begin{justify}
+Aşağıdaki sistem için korunan enerji fonksiyonunu bulun:
+\begin{align}
+\dot{x} &= y,\\
+\dot{y} &= -x-x^3.
+\end{align}
+
+\textbf{Çözüm.} Sistem $\ddot{x}=-x-x^3$ biçiminde yazılabilir. Bu denklem
+\begin{equation}
+\ddot{x}+\frac{dV}{dx}=0
+\end{equation}
+formundadır. Buradan
+\begin{equation}
+\frac{dV}{dx}=x+x^3
+\end{equation}
+olur. İntegral alınırsa
+\begin{equation}
+V(x)=\frac{1}{2}x^2+\frac{1}{4}x^4
+\end{equation}
+bulunur. Dolayısıyla korunan enerji
+\begin{equation}
+E(x,y)=\frac{1}{2}y^2+\frac{1}{2}x^2+\frac{1}{4}x^4
+\end{equation}
+şeklindedir.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.5.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.5.2}
+
+\begin{justify}
+Korunumlu bir sistemde asimptotik kararlı sabit nokta bulunamayacağını enerji yorumu ile açıklayın.
+
+\textbf{Çözüm.} Korunumlu sistemde enerji yörünge boyunca sabittir. Asimptotik kararlı bir sabit nokta olsaydı, yakınındaki birçok farklı başlangıç koşulu zamanla bu noktaya yaklaşırdı. Bu durumda bu farklı başlangıç koşullarının enerjileri, limitte sabit noktanın enerjisine eşit olmak zorunda kalırdı. Fakat enerji başlangıçtan itibaren değişmediği için bütün bu noktaların aynı enerji seviyesinde bulunması gerekir. Açık bir komşulukta enerji sabit olamayacağından asimptotik kararlılık mümkün değildir.
+\end{justify}
+
+\phantomsection
+\section*{6.6 Tersinir Sistemler}
+\addcontentsline{toc}{section}{6.6 Tersinir Sistemler}
+
+\phantomsection
+\subsection*{Alıştırma 6.6.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.6.1}
+
+\begin{justify}
+Aşağıdaki sistemin $t\mapsto -t$, $y\mapsto -y$ dönüşümü altında tersinir olduğunu gösterin:
+\begin{align}
+\dot{x} &= y+x^2y,\\
+\dot{y} &= -x+y^2.
+\end{align}
+
+\textbf{Çözüm.} Bu dönüşüm altında $x$ değişmez, $y$ işaret değiştirir ve zaman ters çevrilir. Tersinirlik için $\dot{x}$ denkleminin $y$'ye göre tek, $\dot{y}$ denkleminin ise $y$'ye göre çift olması gerekir. Burada
+\begin{equation}
+y+x^2y
+\end{equation}
+$y$'ye göre tek fonksiyondur. Ayrıca
+\begin{equation}
+-x+y^2
+\end{equation}
+$y$'ye göre çift fonksiyondur. Bu nedenle sistem verilen dönüşüm altında tersinirdir.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.6.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.6.2}
+
+\begin{justify}
+Tersinir bir sistemde $x$ eksenini iki farklı noktada kesen ve bu kesişimlerde vektör alanına teğet olmayan bir yörüngenin neden kapalı olduğunu açıklayın.
+
+\textbf{Çözüm.} $x$ ekseni simetri doğrusu olsun. Yörünge $x$ eksenini iki noktada keserse, bu iki kesişim arasında kalan yörünge parçası simetri dönüşümüyle eksenin diğer tarafına yansıtılabilir. Zaman da ters çevrildiği için yansıtılmış parça aynı diferansiyel denklemin çözümü olur; fakat ok yönü tersine döner. Teklik nedeniyle bu yansıtılmış parça, ilk parçayı tamamlayan yörüngedir. Böylece iki parça birleşerek kapalı bir eğri oluşturur.
+\end{justify}
+
+\phantomsection
+\section*{6.7 Sarkaç}
+\addcontentsline{toc}{section}{6.7 Sarkaç}
+
+\phantomsection
+\subsection*{Alıştırma 6.7.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.7.1}
+
+\begin{justify}
+Boyutsuz sönümsüz sarkaç
+\begin{equation}
+\ddot{\theta}+\sin\theta=0
+\end{equation}
+için enerji fonksiyonunu bulun.
+
+\textbf{Çözüm.} Denklemi $\dot{\theta}$ ile çarpalım:
+\begin{equation}
+\dot{\theta}\ddot{\theta}+\dot{\theta}\sin\theta=0.
+\end{equation}
+İlk terim $\frac{d}{dt}(\frac{1}{2}\dot{\theta}^{2})$, ikinci terim ise $\frac{d}{dt}(-\cos\theta)$ biçimindedir. Dolayısıyla
+\begin{equation}
+E(\theta,\dot{\theta})=\frac{1}{2}\dot{\theta}^{2}-\cos\theta
+\end{equation}
+korunan enerji fonksiyonudur.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.7.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.7.2}
+
+\begin{justify}
+Sönümsüz sarkaçta $(0,0)$ ve $(\pi,0)$ sabit noktalarını sınıflandırın.
+
+\textbf{Çözüm.} Faz düzlemi sistemi
+\begin{align}
+\dot{\theta} &= v,\\
+\dot{v} &= -\sin\theta
+\end{align}
+şeklindedir. Jacobian
+\begin{equation}
+J(\theta,v)=\begin{pmatrix}0&1\\-\cos\theta&0\end{pmatrix}
+\end{equation}
+olur. $(0,0)$ noktasında
+\begin{equation}
+J(0,0)=\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+\end{equation}
+ve özdeğerler $\lambda=\pm i$'dir. Enerji minimumu nedeniyle bu nokta doğrusal olmayan merkezdir. $(\pi,0)$ noktasında
+\begin{equation}
+J(\pi,0)=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\end{equation}
+ve özdeğerler $\lambda=\pm1$'dir. Bu nedenle $(\pi,0)$ eyer noktasıdır.
+\end{justify}
+
+\phantomsection
+\section*{6.8 İndeks Teorisi}
+\addcontentsline{toc}{section}{6.8 İndeks Teorisi}
+
+\phantomsection
+\subsection*{Alıştırma 6.8.1}
+\addcontentsline{toc}{subsection}{Alıştırma 6.8.1}
+
+\begin{justify}
+Bir kapalı yörüngenin içinde yalnızca iki sabit nokta olduğunu varsayın. Bunlardan biri eyer noktasıysa, diğerinin indeksi ne olmalıdır?
+
+\textbf{Çözüm.} Kapalı yörüngenin indeksi $+1$'dir. Eyer noktasının indeksi $-1$ olduğundan diğer sabit noktanın indeksi $I$ için
+\begin{equation}
+-1+I=1
+\end{equation}
+olmalıdır. Buradan $I=2$ bulunur. Bu nedenle diğer sabit nokta sıradan hiperbolik düğüm, spiral veya merkez olamaz; çünkü onların indeksleri $+1$'dir. Böyle bir faz portresi ancak dejenereliği olan daha özel bir sabit nokta ile mümkün olabilir.
+\end{justify}
+
+\phantomsection
+\subsection*{Alıştırma 6.8.2}
+\addcontentsline{toc}{subsection}{Alıştırma 6.8.2}
+
+\begin{justify}
+Bir kapalı eğrinin içinde iki merkez ve üç eyer noktası varsa, eğrinin indeksi kaçtır?
+
+\textbf{Çözüm.} Merkezlerin her birinin indeksi $+1$, eyerlerin her birinin indeksi $-1$'dir. Toplam indeks
+\begin{equation}
+I_C=2(+1)+3(-1)=-1
+\end{equation}
+olur. Dolayısıyla kapalı eğrinin indeksi $-1$'dir. Eğer bu eğri bir kapalı yörünge olsaydı indeksi $+1$ olmak zorunda kalırdı; bu nedenle verilen sabit nokta düzeni tek başına bir kapalı yörüngenin içinde bulunamaz.
+\end{justify}
+
+\newpage
